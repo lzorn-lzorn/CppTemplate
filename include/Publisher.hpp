@@ -28,7 +28,9 @@ public:
 		auto it = observers.find(event_name);
 		if (it != observers.end()) {
 			for (const Observer* observer : it->second) {
-				observer->Execute(event_name);
+				if (observer) {
+					observer->Execute(event_name);
+				}
 			}
 		}
 	}
